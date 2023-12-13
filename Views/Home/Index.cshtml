@@ -1,0 +1,429 @@
+﻿@model List<ProductModel>
+
+@{
+    ViewBag.title = ViewBag.active = "Trang chủ";
+    //Cách 1 để nhận dữ liệu là 1 List vào view Controller -> View
+    //List<ProductModel> ProductList = ViewBag.productList;
+}
+
+
+<!-- ----------------- Home Banner -------------------- -->
+<div class="row g-0">
+    <div class="col-12 owl_home_banner overflow-hidden position-relative">
+        <a href="">
+            <img src="public/demo/slider_1.webp"
+                 alt=""
+                 class="img-fluid" />
+        </a>
+        <a href="">
+            <img src="public/demo/slider_1.webp"
+                 alt=""
+                 class="img-fluid" />
+        </a>
+    </div>
+</div>
+
+<!-- ----------------- Service -------------------- -->
+<div class="row g-0 bg_yellow py-4">
+    <div class="col-12">
+        <div class="container px-3">
+            <div class="owl_home_service overflow-hidden">
+                <div class="card_service text-center text-white">
+                    <div class="thumbnail">
+                        <img src="public/demo/image_service1.webp"
+                             alt=""
+                             class="img-fluid" />
+                    </div>
+                    <h3 class="text-uppercase fw-bold">MIỄN PHÍ GIAO HÀNG</h3>
+                    <p class="mb-0">Miễn phí ship với đơn hàng > 498K</p>
+                </div>
+
+                <div class="card_service text-center text-white">
+                    <div class="thumbnail">
+                        <img src="public/demo/image_service2.webp"
+                             alt=""
+                             class="img-fluid" />
+                    </div>
+                    <h3 class="text-uppercase fw-bold">THANH TOÁN COD</h3>
+                    <p class="mb-0">Thanh toán khi nhận hàng (COD)</p>
+                </div>
+
+                <div class="card_service text-center text-white">
+                    <div class="thumbnail">
+                        <img src="public/demo/image_service3.webp"
+                             alt=""
+                             class="img-fluid" />
+                    </div>
+                    <h3 class="text-uppercase fw-bold">KHÁCH HÀNG VIP</h3>
+                    <p class="mb-0">Ưu đãi dành cho khách hàng VIP</p>
+                </div>
+
+                <div class="card_service text-center text-white">
+                    <div class="thumbnail">
+                        <img src="public/demo/image_service4.webp"
+                             alt=""
+                             class="img-fluid" />
+                    </div>
+                    <h3 class="text-uppercase fw-bold">HỖ TRỢ BẢO HÀNH</h3>
+                    <p class="mb-0">Đổi , sửa đồ tại tất cả store</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ----------------- San pham hot -------------------- -->
+<div class="row g-0 py-4 py-md-5 bg_light_pink">
+    <div class="col-12">
+        <div class="container">
+            <div class="d-flex flex-wrap">
+                <div class="col-12 col-md-6 col-lg-4 col-xl-5 px-3 block_title text-center text-md-start">
+                    <h2 class="fw-bold text-uppercase position-relative text_green">
+                        <span>SẢN PHẨM HOT</span>
+                    </h2>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-8 col-xl-7 px-3">
+                    <div class="nav_products position-relative">
+                        <div class="nav nav-tabs border-0 h-100 align-items-center overflow-auto mx-4 flex-nowrap"
+                             id="nav-tab"
+                             role="tablist">
+                            <button class="nav-link flex-shrink-0 mb-0 border-0 active"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#hot_tab_product_1"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="true">
+                                Quần áo
+                            </button>
+                            <button class="nav-link flex-shrink-0 mb-0 border-0"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#hot_tab_product_2"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false">
+                                Phụ kiện
+                            </button>
+                            <button class="nav-link flex-shrink-0 mb-0 border-0"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#hot_tab_product_3"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false">
+                                Giầy dép
+                            </button>
+                            <button class="nav-link flex-shrink-0 mb-0 border-0"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#hot_tab_product_4"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false">
+                                Bé gái
+                            </button>
+                            <button class="nav-link flex-shrink-0 mb-0 border-0"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#hot_tab_product_5"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false">
+                                Bé trai
+                            </button>
+                        </div>
+                        <button type="button"
+                                class="prev position-absolute start-0 top-50 translate-middle-y">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="20"
+                                 height="20"
+                                 viewBox="0 0 12 9"
+                                 fill="none">
+                                <path d="M4.47107 1L0.999988 4.52892L4.47107 8"
+                                      stroke="#1c5b41"
+                                      stroke-miterlimit="10"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"></path>
+                                <path d="M6.49585 4.52905H1.05781"
+                                      stroke="#1c5b41"
+                                      stroke-miterlimit="10"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"></path>
+                                <path d="M10.8347 4.52905H8.80992"
+                                      stroke="#1c5b41"
+                                      stroke-miterlimit="10"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <button type="button"
+                                class="next position-absolute end-0 top-50 translate-middle-y">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="20"
+                                 height="20"
+                                 viewBox="0 0 20 14"
+                                 fill="none">
+                                <path d="M12.4492 1L18.4492 7.09998L12.4492 13.1"
+                                      fill="#FFF6E8"></path>
+                                <path d="M12.4492 1L18.4492 7.09998L12.4492 13.1"
+                                      stroke="#1C5B41"
+                                      stroke-width="1.5"
+                                      stroke-miterlimit="10"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"></path>
+                                <path d="M8.94922 7.09998H18.3492"
+                                      stroke="#1C5B41"
+                                      stroke-width="1.5"
+                                      stroke-miterlimit="10"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"></path>
+                                <path d="M1.44922 7.09998H4.94922"
+                                      stroke="#1C5B41"
+                                      stroke-width="1.5"
+                                      stroke-miterlimit="10"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-12 px-3 mt-2 mt-md-0">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active"
+                             id="hot_tab_product_1"
+                             role="tabpanel">
+                            <div class="swiper_product_container swiper_hot_products overflow-hidden">
+                                <div class="swiper-wrapper">
+                                    @foreach (var product in Model)
+                                    {
+                                        @if (product.categories.categoryName.Equals("Quần áo"))
+                                        {
+                                            <div class="swiper-slide card_product">
+                                                @await Html.PartialAsync("_ProductItem", product)
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="view_all text-center">
+                                <a href=""
+                                   class="fw-bold bg_green text-white">
+                                    Xem tất cả
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade"
+                             id="hot_tab_product_2"
+                             role="tabpanel">
+                            <div class="swiper_product_container swiper_hot_products overflow-hidden">
+                                <div class="swiper-wrapper">
+                                    @foreach (var product in Model)
+                                    {
+                                        @if (product.categories.categoryName.Equals("Phụ kiện"))
+                                        {
+                                            <div class="swiper-slide card_product">
+                                                @await Html.PartialAsync("_ProductItem", product)
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="view_all text-center">
+                                <a href=""
+                                   class="fw-bold bg_green text-white">
+                                    Xem tất cả
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade"
+                             id="hot_tab_product_3"
+                             role="tabpanel">
+                            <div class="swiper_product_container swiper_hot_products overflow-hidden">
+                                <div class="swiper-wrapper">
+                                    @foreach (var product in Model)
+                                    {
+                                        @if (product.categories.categoryName.Equals("Giầy dép"))
+                                        {
+                                            <div class="swiper-slide card_product">
+                                                @await Html.PartialAsync("_ProductItem", product)
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="view_all text-center">
+                                <a href=""
+                                   class="fw-bold bg_green text-white">
+                                    Xem tất cả
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade"
+                             id="hot_tab_product_4"
+                             role="tabpanel">
+                            <div class="swiper_product_container swiper_hot_products overflow-hidden">
+                                <div class="swiper-wrapper">
+                                    @foreach (var product in Model)
+                                    {
+                                        @if (product.categories.categoryName.Equals("Bé gái"))
+                                        {
+                                            <div class="swiper-slide card_product">
+                                                @await Html.PartialAsync("_ProductItem", product)
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="view_all text-center">
+                                <a href=""
+                                   class="fw-bold bg_green text-white">
+                                    Xem tất cả
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade"
+                             id="hot_tab_product_5"
+                             role="tabpanel">
+                            <div class="swiper_product_container swiper_hot_products overflow-hidden">
+                                <div class="swiper-wrapper">
+                                    @foreach (var product in Model)
+                                    {
+                                        @if (product.categories.categoryName.Equals("Bé trai"))
+                                        {
+                                            <div class="swiper-slide card_product">
+                                                @await Html.PartialAsync("_ProductItem", product)
+                                            </div>
+                                        }
+                                    }
+                            </div>
+
+                            <div class="view_all text-center">
+                                <a href=""
+                                   class="fw-bold bg_green text-white">
+                                    Xem tất cả
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $(".owl_home_banner").owlCarousel({
+            items: 1,
+        });
+
+        $(".owl_home_service").owlCarousel({
+            margin: 30,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 1,
+                },
+                768: {
+                    items: 3,
+                },
+                992: {
+                    items: 4,
+                },
+            },
+        });
+
+        $(".nav_products > .prev").click(function () {
+            $(".nav_products .nav-tabs").animate({ scrollLeft: 0 }, 500);
+        });
+
+        $(".nav_products > .next").click(function () {
+            const leftPos = $(".nav_products .nav-tabs").scrollLeft();
+            $(".nav_products .nav-tabs").animate({ scrollLeft: leftPos + 150 }, 500);
+        });
+
+        new Swiper(".swiper_hot_products", {
+            spaceBetween: 20,
+            breakpoints: {
+                0: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 3,
+                },
+                992: {
+                    slidesPerView: 5,
+                },
+            },
+            grid: {
+                fill: "row",
+                rows: 2,
+            },
+        });
+
+        new Swiper(".swiper_new_products", {
+            spaceBetween: 20,
+            grid: {
+                fill: "row",
+                rows: 2,
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        new Swiper(".swiper_sale_products", {
+            spaceBetween: 30,
+            breakpoints: {
+                0: {
+                    slidesPerView: 2,
+                    grid: {
+                        fill: "row",
+                        rows: 2,
+                    },
+                },
+                768: {
+                    slidesPerView: 3,
+                },
+                992: {
+                    slidesPerView: 4,
+                },
+                1200: {
+                    slidesPerView: 5,
+                },
+            },
+        });
+        $(".owl_home_brands").owlCarousel({
+            nav: false,
+            responsive: {
+                0: {
+                    items: 3,
+                    margin: 10,
+                },
+                768: {
+                    items: 4,
+                    margin: 30,
+                },
+                992: {
+                    margin: 30,
+                    items: 5,
+                },
+                1200: {
+                    margin: 30,
+                    items: 6,
+                },
+            },
+        });
+    })
+</script>
