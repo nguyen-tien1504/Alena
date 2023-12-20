@@ -1,0 +1,859 @@
+﻿@using System.Globalization
+@model ProductModel
+@{
+    ViewBag.title = Model.productName;
+}
+ <!-- ------------------ Breadcrumb -------------- -->
+<div class="row g-0">
+    <div class="col-12">
+        <div class="container px-3">
+        <nav style="--bs-breadcrumb-divider: ">
+            <ol class="breadcrumb mb-0 d-block">
+            <li class="breadcrumb-item px-0 d-inline-block">
+                <a href="#">Trang chủ</a>
+                <span class="breadcrumb_divider">
+                &nbsp;
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="10"
+                    viewBox="0 0 320 512">
+                    <path
+                    fill="currentColor"
+                    d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path>
+                </svg>
+                &nbsp;
+                </span>
+            </li>
+            <li class="breadcrumb-item px-0 d-inline-block">
+                <a href="#">@Model.categories.categoryName</a>
+                <span class="breadcrumb_divider">
+                &nbsp;
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="10"
+                    viewBox="0 0 320 512">
+                    <path
+                    fill="currentColor"
+                    d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path>
+                </svg>
+                &nbsp;
+                </span>
+            </li>
+            <li class="breadcrumb-item px-0 d-inline-block active">@Model.productName</li>
+            </ol>
+        </nav>
+        </div>
+    </div>
+</div>
+
+ <!-- ------------------ Product detail -------------- -->
+<div class="row g-0 mt-3 mt-md-0 pb-5">
+    <div class="col-12">
+        <div class="container">
+        <div class="d-flex flex-wrap">
+            <div class="col-12 col-lg-7 px-3">
+            <div class="gallery_top overflow-hidden">
+                <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="">
+                    <img
+                        src="~/public/demo/products/product detail 1.webp"
+                        alt=""
+                        class="img-fluid" />
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="">
+                    <img src="~/public/demo/products/product detail 2.webp"
+                        alt=""
+                        class="img-fluid" />
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="">
+                    <img src="~/public/demo/products/product detail 3.webp"
+                        alt=""
+                        class="img-fluid" />
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="">
+                    <img src="~/public/demo/products/product detail 4.webp"
+                        alt=""
+                        class="img-fluid" />
+                    </a>
+                </div>
+                </div>
+            </div>
+
+            <div class="gallery_thumb_container my-2 my-lg-3 position-relative">
+                <div class="gallery_thumb overflow-hidden">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide active">
+                    <img src="~/public/demo/products/product detail thumb 1.webp"
+                        alt=""
+                        class="img-fluid" />
+                    </div>
+                    <div class="swiper-slide">
+                    <img src="~/public/demo/products/product detail thumb 2.webp"
+                        alt=""
+                        class="img-fluid" />
+                    </div>
+                    <div class="swiper-slide">
+                    <img src="~/public/demo/products/product detail thumb 3.webp"
+                        alt=""
+                        class="img-fluid" />
+                    </div>
+                    <div class="swiper-slide">
+                    <img src="~/public/demo/products/product detail thumb 4.webp"
+                        alt=""
+                        class="img-fluid" />
+                    </div>
+                </div>
+
+                <!-- Swiper navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-12 col-lg-5 px-3 detail_pro">
+            <h1 class="text-black mt-3 mt-md-0">@Model.productName</h1>
+            <div class="sku fs_15">Mã sp: Đang cập nhật</div>
+            <div class="price_box mb-4 position-relative">
+                        <span class="price fw-bold text-uppercase">@Model.productCurrentPrice?.ToString("#,###₫", new CultureInfo("vi-VN"))</span>
+                <span class="old_price text-decoration-line-through ms-1">
+                            @Model.productOldPrice?.ToString("#,###₫", new CultureInfo("vi-VN"))
+                </span>
+                <span class="save_price text-white position-absolute">Sale</span>
+            </div>
+            <div class="service_product pt-2">
+                <div class="d-flex gap-4 align-items-start">
+                <img src="~/public/demo/iamge_product2.webp"
+                    alt=""
+                    class="img-fluid" />
+                <div class="title fs-6">
+                    <p class="mb-0 fw-bold">Miễn phí vận chuyển</p>
+                    <p class="mb-0">Cho đơn hàng từ 499.000đ</p>
+                </div>
+                </div>
+
+                <div class="d-flex gap-4 align-items-start">
+                <img
+                    src="~/public/demo/iamge_product1.webp"
+                    alt=""
+                    class="img-fluid" />
+                <div class="title fs-6">
+                    <p class="mb-0 fw-bold">Miễn phí đổi, sửa hàng</p>
+                    <p class="mb-0">
+                    Đổi hàng trong 30 ngày kể từ ngày mua Hỗ trợ sửa đồ miễn phí
+                    </p>
+                </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="mb-2">Số lượng:</label>
+                <div class="input_quantity d-flex">
+                <button>-</button>
+                <input
+                    type="text"
+                    value="1"
+                    class="text-center p-0" />
+                <button>+</button>
+                </div>
+            </div>
+
+            <button class="btn_buy_now w-100 bg_green text-white fw-bold fs_18">
+                Mua ngay
+            </button>
+
+            <button
+                type="button"
+                class="btn_add_cart w-100 text_green fw-bold fs_18 mt-3"
+                data-bs-toggle="modal"
+                data-bs-target="#cart_modal">
+                Thêm vào giỏ hàng
+            </button>
+
+            <div class="tab_product_info mt-5">
+                <div>
+                <h3 class="fs-6 text-decoration-underline position-relative">
+                    Thông tin chi tiết sản phẩm
+                    <svg
+                    class="plus position-absolute top-0 end-0"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 18 18"
+                    fill="none">
+                    <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M9.83317 8.16666H17.3332V9.83332H9.83317V17.3333H8.1665V9.83332H0.666504V8.16666H8.1665V0.666656H9.83317V8.16666Z"
+                        fill="#9E9E9E"></path>
+                    </svg>
+                    <svg
+                    class="minus position-absolute top-50 end-0 translate-middle-y d-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="2"
+                    viewBox="0 0 20 2"
+                    fill="none">
+                    <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M20 0V2H0V0H20Z"
+                        fill="black"></path>
+                    </svg>
+                </h3>
+                <p class="fs-6 d-none d-inline-block w-100">
+                   @Model.description
+                </p>
+                </div>
+
+                <div>
+                <h3 class="fs-6 text-decoration-underline position-relative">
+                    Chất liệu
+                    <svg
+                    class="plus position-absolute top-0 end-0"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 18 18"
+                    fill="none">
+                    <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M9.83317 8.16666H17.3332V9.83332H9.83317V17.3333H8.1665V9.83332H0.666504V8.16666H8.1665V0.666656H9.83317V8.16666Z"
+                        fill="#9E9E9E"></path>
+                    </svg>
+                    <svg
+                    class="minus position-absolute top-50 end-0 translate-middle-y d-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="2"
+                    viewBox="0 0 20 2"
+                    fill="none">
+                    <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M20 0V2H0V0H20Z"
+                        fill="black"></path>
+                    </svg>
+                </h3>
+                <p class="fs-6 d-none d-inline-block w-100">Len cao cấp</p>
+                </div>
+            </div>
+            </div>
+
+            <!-- ------------------ Product related -------------- -->
+            <div class="col-12 px-3 product_related_container">
+            <h2 class="mb-5 fw-bold"><a href="">Sản phẩm cùng loại</a></h2>
+            <div
+                class="swiper_related_product overflow-hidden mb-3 position-relative">
+                <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="card_product">
+                    <form action="">
+                        <div class="product_thumnail overflow-hidden position-relative">
+                        <a
+                            href=""
+                            class="h-100">
+                            <img src="~/public/demo/products/hot product 1.webp"
+                            alt=""
+                            class="img-fluid" />
+                        </a>
+                        <div
+                            class="action d-none d-lg-block position-absolute start-0 bottom-0 w-100">
+                            <button
+                            class="d-flex justify-content-center align-items-center gap-1 text-white w-100 btn_add_cart">
+                            Tùy chọn
+                            </button>
+                        </div>
+                        </div>
+
+                        <div class="product_info">
+                        <a
+                            href=""
+                            class="mb-2 d-block text-truncate">
+                            @Model.productName
+                        </a>
+                        <div class="price_box d-flex gap-2">
+                            <span class="new text_yellow fs-6">110.000₫</span>
+                            <span class="old text-decoration-line-through">
+                            130.000₫
+                            </span>
+                        </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="card_product">
+                    <form action="">
+                        <div class="product_thumnail overflow-hidden position-relative">
+                        <a
+                            href=""
+                            class="h-100">
+                            <img src="~/public/demo/products/hot product 2.webp"
+                            alt=""
+                            class="img-fluid" />
+                        </a>
+                        <div
+                            class="action d-none d-lg-block position-absolute start-0 bottom-0 w-100">
+                            <button
+                            class="d-flex justify-content-center align-items-center gap-1 text-white w-100 btn_add_cart">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 19 19"
+                                fill="none">
+                                <g>
+                                <path
+                                    d="M18.7179 6.86766C18.467 6.55289 18.0906 6.37232 17.6852 6.37232H14.026L12.0418 1.82891C11.9188 1.54721 11.5907 1.41848 11.309 1.54157C11.0272 1.66459 10.8986 1.99274 11.0216 2.27448L12.8112 6.37236H6.18877L7.97837 2.27448C8.10139 1.99274 7.97276 1.66462 7.69103 1.54157C7.40933 1.41848 7.08117 1.54713 6.95816 1.82891L4.97396 6.37236H1.31482C0.909367 6.37236 0.532967 6.55289 0.282071 6.86769C0.0357758 7.17674 -0.0551051 7.57403 0.0327328 7.95782L1.9868 16.493C2.12325 17.089 2.65046 17.5052 3.26889 17.5052H15.7311C16.3495 17.5052 16.8767 17.089 17.0132 16.493L18.9673 7.95778C19.0551 7.574 18.9642 7.1767 18.7179 6.86766ZM15.7311 16.3919H3.26889C3.17437 16.3919 3.09158 16.3299 3.07203 16.2445L1.11796 7.70937C1.10263 7.64239 1.12835 7.59199 1.15269 7.56153C1.17526 7.53318 1.22636 7.48564 1.31482 7.48564H4.48779L4.34198 7.81951C4.21897 8.10125 4.34759 8.42937 4.62932 8.55242C4.70183 8.58411 4.77739 8.59911 4.85179 8.59911C5.06636 8.59911 5.27083 8.47431 5.36219 8.26512L5.7026 7.48571H13.2975L13.6379 8.26512C13.7292 8.47434 13.9337 8.59911 14.1483 8.59911C14.2226 8.59911 14.2982 8.58411 14.3708 8.55242C14.6525 8.42941 14.7811 8.10125 14.6581 7.81951L14.5123 7.48564H17.6853C17.7737 7.48564 17.8248 7.53318 17.8474 7.56153C17.8717 7.59203 17.8974 7.64243 17.8821 7.70933L15.928 16.2445C15.9085 16.3299 15.8256 16.3919 15.7311 16.3919Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M6.16016 9.89771C5.85274 9.89771 5.60352 10.1469 5.60352 10.4543V14.5364C5.60352 14.8438 5.85274 15.093 6.16016 15.093C6.46757 15.093 6.7168 14.8438 6.7168 14.5364V10.4543C6.7168 10.1469 6.46761 9.89771 6.16016 9.89771Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M9.5 9.89771C9.19259 9.89771 8.94336 10.1469 8.94336 10.4543V14.5364C8.94336 14.8438 9.19259 15.093 9.5 15.093C9.80741 15.093 10.0566 14.8438 10.0566 14.5364V10.4543C10.0566 10.1469 9.80741 9.89771 9.5 9.89771Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M12.8398 9.89771C12.5324 9.89771 12.2832 10.1469 12.2832 10.4543V14.5364C12.2832 14.8438 12.5324 15.093 12.8398 15.093C13.1473 15.093 13.3965 14.8438 13.3965 14.5364V10.4543C13.3964 10.1469 13.1473 9.89771 12.8398 9.89771Z"
+                                    fill="white"></path>
+                                </g>
+                                <defs>
+                                <clipPath>
+                                    <rect
+                                    width="19"
+                                    height="19"
+                                    fill="white"></rect>
+                                </clipPath>
+                                </defs>
+                            </svg>
+
+                            Thêm vào giỏ hàng
+                            </button>
+                        </div>
+                        </div>
+
+                        <div class="product_info">
+                        <a
+                            href=""
+                            class="mb-2 d-block text-truncate">
+                            Chân váy nữ
+                        </a>
+                        <div class="price_box d-flex gap-2">
+                            <span class="new text_yellow fs-6">70.000₫</span>
+                        </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="card_product">
+                    <form action="">
+                        <div class="product_thumnail overflow-hidden position-relative">
+                        <a
+                            href=""
+                            class="h-100">
+                            <img src="~/public/demo/products/hot product 3.webp"
+                            alt=""
+                            class="img-fluid" />
+                        </a>
+                        <div
+                            class="action d-none d-lg-block position-absolute start-0 bottom-0 w-100">
+                            <button
+                            class="d-flex justify-content-center align-items-center gap-1 text-white w-100 btn_add_cart">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 19 19"
+                                fill="none">
+                                <g>
+                                <path
+                                    d="M18.7179 6.86766C18.467 6.55289 18.0906 6.37232 17.6852 6.37232H14.026L12.0418 1.82891C11.9188 1.54721 11.5907 1.41848 11.309 1.54157C11.0272 1.66459 10.8986 1.99274 11.0216 2.27448L12.8112 6.37236H6.18877L7.97837 2.27448C8.10139 1.99274 7.97276 1.66462 7.69103 1.54157C7.40933 1.41848 7.08117 1.54713 6.95816 1.82891L4.97396 6.37236H1.31482C0.909367 6.37236 0.532967 6.55289 0.282071 6.86769C0.0357758 7.17674 -0.0551051 7.57403 0.0327328 7.95782L1.9868 16.493C2.12325 17.089 2.65046 17.5052 3.26889 17.5052H15.7311C16.3495 17.5052 16.8767 17.089 17.0132 16.493L18.9673 7.95778C19.0551 7.574 18.9642 7.1767 18.7179 6.86766ZM15.7311 16.3919H3.26889C3.17437 16.3919 3.09158 16.3299 3.07203 16.2445L1.11796 7.70937C1.10263 7.64239 1.12835 7.59199 1.15269 7.56153C1.17526 7.53318 1.22636 7.48564 1.31482 7.48564H4.48779L4.34198 7.81951C4.21897 8.10125 4.34759 8.42937 4.62932 8.55242C4.70183 8.58411 4.77739 8.59911 4.85179 8.59911C5.06636 8.59911 5.27083 8.47431 5.36219 8.26512L5.7026 7.48571H13.2975L13.6379 8.26512C13.7292 8.47434 13.9337 8.59911 14.1483 8.59911C14.2226 8.59911 14.2982 8.58411 14.3708 8.55242C14.6525 8.42941 14.7811 8.10125 14.6581 7.81951L14.5123 7.48564H17.6853C17.7737 7.48564 17.8248 7.53318 17.8474 7.56153C17.8717 7.59203 17.8974 7.64243 17.8821 7.70933L15.928 16.2445C15.9085 16.3299 15.8256 16.3919 15.7311 16.3919Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M6.16016 9.89771C5.85274 9.89771 5.60352 10.1469 5.60352 10.4543V14.5364C5.60352 14.8438 5.85274 15.093 6.16016 15.093C6.46757 15.093 6.7168 14.8438 6.7168 14.5364V10.4543C6.7168 10.1469 6.46761 9.89771 6.16016 9.89771Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M9.5 9.89771C9.19259 9.89771 8.94336 10.1469 8.94336 10.4543V14.5364C8.94336 14.8438 9.19259 15.093 9.5 15.093C9.80741 15.093 10.0566 14.8438 10.0566 14.5364V10.4543C10.0566 10.1469 9.80741 9.89771 9.5 9.89771Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M12.8398 9.89771C12.5324 9.89771 12.2832 10.1469 12.2832 10.4543V14.5364C12.2832 14.8438 12.5324 15.093 12.8398 15.093C13.1473 15.093 13.3965 14.8438 13.3965 14.5364V10.4543C13.3964 10.1469 13.1473 9.89771 12.8398 9.89771Z"
+                                    fill="white"></path>
+                                </g>
+                                <defs>
+                                <clipPath>
+                                    <rect
+                                    width="19"
+                                    height="19"
+                                    fill="white"></rect>
+                                </clipPath>
+                                </defs>
+                            </svg>
+
+                            Thêm vào giỏ hàng
+                            </button>
+                        </div>
+                        </div>
+
+                        <div class="product_info">
+                        <a
+                            href=""
+                            class="mb-2 d-block text-truncate">
+                            Áo khoác nữ
+                        </a>
+                        <div class="price_box d-flex gap-2">
+                            <span class="new text_yellow fs-6">300.000₫</span>
+                            <span class="old text-decoration-line-through">
+                            500.000₫
+                            </span>
+                        </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="card_product">
+                    <form action="">
+                        <div class="product_thumnail overflow-hidden position-relative">
+                        <a
+                            href=""
+                            class="h-100">
+                            <img src="~/public/demo/products/hot product 4.webp"
+                            alt=""
+                            class="img-fluid" />
+                        </a>
+                        <div
+                            class="action d-none d-lg-block position-absolute start-0 bottom-0 w-100">
+                            <button
+                            class="d-flex justify-content-center align-items-center gap-1 text-white w-100 btn_add_cart">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 19 19"
+                                fill="none">
+                                <g>
+                                <path
+                                    d="M18.7179 6.86766C18.467 6.55289 18.0906 6.37232 17.6852 6.37232H14.026L12.0418 1.82891C11.9188 1.54721 11.5907 1.41848 11.309 1.54157C11.0272 1.66459 10.8986 1.99274 11.0216 2.27448L12.8112 6.37236H6.18877L7.97837 2.27448C8.10139 1.99274 7.97276 1.66462 7.69103 1.54157C7.40933 1.41848 7.08117 1.54713 6.95816 1.82891L4.97396 6.37236H1.31482C0.909367 6.37236 0.532967 6.55289 0.282071 6.86769C0.0357758 7.17674 -0.0551051 7.57403 0.0327328 7.95782L1.9868 16.493C2.12325 17.089 2.65046 17.5052 3.26889 17.5052H15.7311C16.3495 17.5052 16.8767 17.089 17.0132 16.493L18.9673 7.95778C19.0551 7.574 18.9642 7.1767 18.7179 6.86766ZM15.7311 16.3919H3.26889C3.17437 16.3919 3.09158 16.3299 3.07203 16.2445L1.11796 7.70937C1.10263 7.64239 1.12835 7.59199 1.15269 7.56153C1.17526 7.53318 1.22636 7.48564 1.31482 7.48564H4.48779L4.34198 7.81951C4.21897 8.10125 4.34759 8.42937 4.62932 8.55242C4.70183 8.58411 4.77739 8.59911 4.85179 8.59911C5.06636 8.59911 5.27083 8.47431 5.36219 8.26512L5.7026 7.48571H13.2975L13.6379 8.26512C13.7292 8.47434 13.9337 8.59911 14.1483 8.59911C14.2226 8.59911 14.2982 8.58411 14.3708 8.55242C14.6525 8.42941 14.7811 8.10125 14.6581 7.81951L14.5123 7.48564H17.6853C17.7737 7.48564 17.8248 7.53318 17.8474 7.56153C17.8717 7.59203 17.8974 7.64243 17.8821 7.70933L15.928 16.2445C15.9085 16.3299 15.8256 16.3919 15.7311 16.3919Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M6.16016 9.89771C5.85274 9.89771 5.60352 10.1469 5.60352 10.4543V14.5364C5.60352 14.8438 5.85274 15.093 6.16016 15.093C6.46757 15.093 6.7168 14.8438 6.7168 14.5364V10.4543C6.7168 10.1469 6.46761 9.89771 6.16016 9.89771Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M9.5 9.89771C9.19259 9.89771 8.94336 10.1469 8.94336 10.4543V14.5364C8.94336 14.8438 9.19259 15.093 9.5 15.093C9.80741 15.093 10.0566 14.8438 10.0566 14.5364V10.4543C10.0566 10.1469 9.80741 9.89771 9.5 9.89771Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M12.8398 9.89771C12.5324 9.89771 12.2832 10.1469 12.2832 10.4543V14.5364C12.2832 14.8438 12.5324 15.093 12.8398 15.093C13.1473 15.093 13.3965 14.8438 13.3965 14.5364V10.4543C13.3964 10.1469 13.1473 9.89771 12.8398 9.89771Z"
+                                    fill="white"></path>
+                                </g>
+                                <defs>
+                                <clipPath>
+                                    <rect
+                                    width="19"
+                                    height="19"
+                                    fill="white"></rect>
+                                </clipPath>
+                                </defs>
+                            </svg>
+
+                            Thêm vào giỏ hàng
+                            </button>
+                        </div>
+                        </div>
+
+                        <div class="product_info">
+                        <a
+                            href=""
+                            class="mb-2 d-block text-truncate">
+                            Đồ thể thao nữ
+                        </a>
+                        <div class="price_box d-flex gap-2">
+                            <span class="new text_yellow fs-6">Liên hệ</span>
+                        </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="card_product">
+                    <form action="">
+                        <div class="product_thumnail overflow-hidden position-relative">
+                        <a
+                            href=""
+                            class="h-100">
+                            <img src="~/public/demo/products/hot product 5.webp"
+                            alt=""
+                            class="img-fluid" />
+                        </a>
+                        <div
+                            class="action d-none d-lg-block position-absolute start-0 bottom-0 w-100">
+                            <button
+                            class="d-flex justify-content-center align-items-center gap-1 text-white w-100 btn_add_cart">
+                            Tùy chọn
+                            </button>
+                        </div>
+                        </div>
+
+                        <div class="product_info">
+                        <a
+                            href=""
+                            class="mb-2 d-block text-truncate">
+                            Sơ mi trẻ em
+                        </a>
+                        <div class="price_box d-flex gap-2">
+                            <span class="new text_yellow fs-6">Liên hệ</span>
+                        </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="card_product">
+                    <form action="">
+                        <div class="product_thumnail overflow-hidden position-relative">
+                        <a
+                            href=""
+                            class="h-100">
+                            <img src="~/public/demo/products/hot product 1.webp"
+                            alt=""
+                            class="img-fluid" />
+                        </a>
+                        <div
+                            class="action d-none d-lg-block position-absolute start-0 bottom-0 w-100">
+                            <button
+                            class="d-flex justify-content-center align-items-center gap-1 text-white w-100 btn_add_cart">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 19 19"
+                                fill="none">
+                                <g>
+                                <path
+                                    d="M18.7179 6.86766C18.467 6.55289 18.0906 6.37232 17.6852 6.37232H14.026L12.0418 1.82891C11.9188 1.54721 11.5907 1.41848 11.309 1.54157C11.0272 1.66459 10.8986 1.99274 11.0216 2.27448L12.8112 6.37236H6.18877L7.97837 2.27448C8.10139 1.99274 7.97276 1.66462 7.69103 1.54157C7.40933 1.41848 7.08117 1.54713 6.95816 1.82891L4.97396 6.37236H1.31482C0.909367 6.37236 0.532967 6.55289 0.282071 6.86769C0.0357758 7.17674 -0.0551051 7.57403 0.0327328 7.95782L1.9868 16.493C2.12325 17.089 2.65046 17.5052 3.26889 17.5052H15.7311C16.3495 17.5052 16.8767 17.089 17.0132 16.493L18.9673 7.95778C19.0551 7.574 18.9642 7.1767 18.7179 6.86766ZM15.7311 16.3919H3.26889C3.17437 16.3919 3.09158 16.3299 3.07203 16.2445L1.11796 7.70937C1.10263 7.64239 1.12835 7.59199 1.15269 7.56153C1.17526 7.53318 1.22636 7.48564 1.31482 7.48564H4.48779L4.34198 7.81951C4.21897 8.10125 4.34759 8.42937 4.62932 8.55242C4.70183 8.58411 4.77739 8.59911 4.85179 8.59911C5.06636 8.59911 5.27083 8.47431 5.36219 8.26512L5.7026 7.48571H13.2975L13.6379 8.26512C13.7292 8.47434 13.9337 8.59911 14.1483 8.59911C14.2226 8.59911 14.2982 8.58411 14.3708 8.55242C14.6525 8.42941 14.7811 8.10125 14.6581 7.81951L14.5123 7.48564H17.6853C17.7737 7.48564 17.8248 7.53318 17.8474 7.56153C17.8717 7.59203 17.8974 7.64243 17.8821 7.70933L15.928 16.2445C15.9085 16.3299 15.8256 16.3919 15.7311 16.3919Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M6.16016 9.89771C5.85274 9.89771 5.60352 10.1469 5.60352 10.4543V14.5364C5.60352 14.8438 5.85274 15.093 6.16016 15.093C6.46757 15.093 6.7168 14.8438 6.7168 14.5364V10.4543C6.7168 10.1469 6.46761 9.89771 6.16016 9.89771Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M9.5 9.89771C9.19259 9.89771 8.94336 10.1469 8.94336 10.4543V14.5364C8.94336 14.8438 9.19259 15.093 9.5 15.093C9.80741 15.093 10.0566 14.8438 10.0566 14.5364V10.4543C10.0566 10.1469 9.80741 9.89771 9.5 9.89771Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M12.8398 9.89771C12.5324 9.89771 12.2832 10.1469 12.2832 10.4543V14.5364C12.2832 14.8438 12.5324 15.093 12.8398 15.093C13.1473 15.093 13.3965 14.8438 13.3965 14.5364V10.4543C13.3964 10.1469 13.1473 9.89771 12.8398 9.89771Z"
+                                    fill="white"></path>
+                                </g>
+                                <defs>
+                                <clipPath>
+                                    <rect
+                                    width="19"
+                                    height="19"
+                                    fill="white"></rect>
+                                </clipPath>
+                                </defs>
+                            </svg>
+
+                            Thêm vào giỏ hàng
+                            </button>
+                        </div>
+                        </div>
+
+                        <div class="product_info">
+                        <a
+                            href=""
+                            class="mb-2 d-block text-truncate">
+                            Áo len nữ
+                        </a>
+                        <div class="price_box d-flex gap-2">
+                            <span class="new text_yellow fs-6">110.000₫</span>
+                            <span class="old text-decoration-line-through">
+                            130.000₫
+                            </span>
+                        </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Swiper navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cart Modal -->
+<div class="modal fade cart_modal" id="cart_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog top-50 start-50 m-0">
+          <div class="modal-content border-0 rounded-0">
+            <div class="modal-header border-0 bg_green text-white rounded-0 fw-bold">
+              <div class="d-flex align-items-center gap-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  width="20"
+                  height="20">
+                  <path
+                    fill="currentColor"
+                    d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z"></path>
+                </svg>
+
+                <p class="mb-0 d-none d-lg-block">
+                  Bạn đã thêm [
+                  <a href="">Áo len nữ</a>
+                  ] vào giỏ hàng
+                </p>
+                <p class="mb-0 d-lg-none">Mua hàng thành công</p>
+              </div>
+              <button
+                type="button"
+                class="px-2"
+                data-bs-dismiss="modal"
+                aria-label="Close">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 365.696 365.696">
+                  <g>
+                    <path
+                      d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0"
+                      fill="#ffffff"></path>
+                  </g>
+                </svg>
+              </button>
+            </div>
+
+            <div class="modal-body p-0">
+              <a
+                href=""
+                class="cart_count fs-6 d-none d-lg-block">
+                Giỏ hàng của bạn hiện có
+                <span>3</span>
+                sản phẩm
+              </a>
+
+              <div class="cart_product_container">
+                <div
+                  class="cart_header fw-bold d-none d-lg-grid align-items-center px-2 rounded-0">
+                  <div>Thông tin sản phẩm</div>
+                  <div class="text-center">Đơn giá</div>
+                  <div class="text-center">Số lượng</div>
+                  <div class="text-center">Thành tiền</div>
+                </div>
+
+                <div class="cart_product_wrapper">
+                  <div
+                    class="cart_row d-flex d-lg-grid align-items-md-center mb-2 p-2 mb-lg-0 gap-3 gap-lg-0">
+                    <div class="d-flex align-items-center gap-3">
+                      <a
+                        href=""
+                        class="flex-shrink-0 cart_img d-flex align-items-center justify-content-center">
+                        <img
+                          src="public/demo/products/hot product 1.webp"
+                          alt="" />
+                      </a>
+
+                      <div class="cart_info flex-grow-1 d-none d-lg-block">
+                        <a
+                          href=""
+                          class="w-100 mb-1">
+                          Áo len nữ
+                        </a>
+                        <a
+                          href=""
+                          class="w-100 btn_cart_delete fw_300">
+                          Xóa
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="price text-center d-none d-lg-block">
+                      <p class="mb-0 fw-bold text_yellow">110.000₫</p>
+                      <span class="text-decoration-line-through">130.000₫</span>
+                    </div>
+
+                    <div
+                      class="input_quantity text-center d-none d-lg-flex justify-content-center">
+                      <button type="button">-</button>
+                      <input
+                        type="text"
+                        value="1"
+                        class="p-0 text-center"
+                        min="0" />
+                      <button type="button">+</button>
+                    </div>
+
+                    <div class="text-center fw-bold text_yellow d-none d-lg-block">
+                      110.000₫
+                    </div>
+
+                    <!-- --------------- Cart product info mobile ----------------- -->
+                    <div class="d-lg-none flex-grow-1 fw-bold">
+                      <h4 class="fs_14">Áo len nữ</h4>
+                      <span class="fs-6">110.000₫</span>
+                    </div>
+                  </div>
+
+                  <div
+                    class="cart_row d-flex d-lg-grid align-items-md-center mb-2 p-2 mb-lg-0 gap-3 gap-lg-0">
+                    <div class="d-flex align-items-center gap-3">
+                      <a
+                        href=""
+                        class="flex-shrink-0 cart_img d-flex align-items-center justify-content-center">
+                        <img
+                          src="public/demo/products/hot product 1.webp"
+                          alt="" />
+                      </a>
+
+                      <div class="cart_info flex-grow-1 d-none d-lg-block">
+                        <a
+                          href=""
+                          class="w-100 mb-1">
+                          Áo len nữ
+                        </a>
+                        <a
+                          href=""
+                          class="w-100 btn_cart_delete fw_300">
+                          Xóa
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="price text-center d-none d-lg-block">
+                      <p class="mb-0 fw-bold text_yellow">110.000₫</p>
+                      <span class="text-decoration-line-through">130.000₫</span>
+                    </div>
+
+                    <div
+                      class="input_quantity text-center d-none d-lg-flex justify-content-center">
+                      <button type="button">-</button>
+                      <input
+                        type="text"
+                        value="1"
+                        class="p-0 text-center"
+                        min="0" />
+                      <button type="button">+</button>
+                    </div>
+
+                    <div class="text-center fw-bold text_yellow d-none d-lg-block">
+                      110.000₫
+                    </div>
+
+                    <!-- --------------- Cart product info mobile ----------------- -->
+                    <div class="d-lg-none flex-grow-1 fw-bold">
+                      <h4 class="fs_14">Áo len nữ</h4>
+                      <span class="fs-6">110.000₫</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer border-0 rounded-0 p-2 pt-0">
+              <div class="col-12 col-lg-4 m-0 d-none d-lg-block">
+                <div class="mb-3 d-flex justify-content-between">
+                  <span class="fs_15">Tổng tiền:</span>
+                  <span class="fw-bold text_yellow">110.000₫</span>
+                </div>
+
+                <button class="btn_checkout w-100 text-center text-white">
+                  Thanh toán
+                </button>
+              </div>
+
+              <div class="col-12 d-lg-none m-0">
+                <a
+                  href=""
+                  class="cart_count mb-2">
+                  Giỏ hàng của bạn hiện có
+                  <span>3</span>
+                  sản phẩm
+                </a>
+
+                <button class="text-white bg_green w-100 text-center btn_continue">
+                  Tiếp tục mua hàng
+                </button>
+
+                <button class="btn_checkout w-100 text-center text-white rounded-0">
+                  Thanh toán ngay
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<script>
+    $(document).ready(function () {
+        const swiperGalleryThumb = new Swiper(".gallery_thumb", {
+            breakpoints: {
+                0: {
+                    slidesPerView: 3,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 15,
+                },
+                992: {
+                    slidesPerView: 5,
+                    spaceBetween: 20,
+                },
+            },
+        });
+        const swiperGalleryTop = new Swiper(".gallery_top", {
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            thumbs: {
+                swiper: swiperGalleryThumb,
+            },
+        });
+
+        $(".tab_product_info > * ").click(function () {
+            $(this).find("svg").toggleClass("d-none");
+            $(this).children("p").toggleClass("d-none");
+        });
+
+        const swiperRelatedProduct = new Swiper(".swiper_related_product", {
+            breakpoints: {
+                0: {
+                    slidesPerView: 2,
+                    spaceBetween: 15,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                992: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                },
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    });
+</script>

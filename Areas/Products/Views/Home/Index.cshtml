@@ -1,0 +1,348 @@
+﻿@using System.Globalization
+@model List<ProductModel>
+
+<div class="container my-5">
+    <div class="row flex-lg-nowrap">
+        <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
+            <div class="card p-3">
+                <div class="e-navlist e-navlist--active-bg">
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link px-2 active" href="#"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Overview</span></a></li>
+                        <li class="nav-item"><a class="nav-link px-2" href="https://www.bootdey.com/snippets/view/bs4-crud-users" target="__blank"><i class="fa fa-fw fa-th mr-1"></i><span>CRUD</span></a></li>
+                        <li class="nav-item"><a class="nav-link px-2" href="https://www.bootdey.com/snippets/view/bs4-edit-profile-page" target="__blank"><i class="fa fa-fw fa-cog mr-1"></i><span>Settings</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="e-tabs mb-3 px-3">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" href="#">Users</a></li>
+                </ul>
+            </div>
+
+            <div class="row flex-lg-nowrap">
+                <div class="col mb-3">
+                    <div class="e-panel card">
+                        <div class="card-body">
+                            <div class="e-table">
+                                <div class="table-responsive table-lg mt-3">
+                                    <table class="table table-bordered text-center">
+                                        <thead>
+                                            <tr>
+                                                <th class="align-top">
+                                                    <div class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0">
+                                                        <input type="checkbox" class="custom-control-input" id="all-items">
+                                                        <label class="custom-control-label" for="all-items"></label>
+                                                    </div>
+                                                </th>
+                                                <th class="max-width">Product Name</th>
+                                                <th class="sortable">Product Price</th>
+                                                <th>Product Category </th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(ProductModel product in Model)
+                                            {
+                                                <tr>
+                                                    <td class="align-middle">
+                                                        <div class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
+                                                            <input type="checkbox" class="custom-control-input" id="item-3">
+                                                            <label class="custom-control-label" for="item-3"></label>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-nowrap align-middle">@product.productName</td>
+                                                    <td class="text-nowrap align-middle">@{
+                                                            if (product.productCurrentPrice != null)
+                                                            {
+                                                                <span>
+                                                                    @product.productCurrentPrice?.ToString("#,###₫", new CultureInfo("vi-VN"))
+                                                                </span>
+                                                            }
+                                                            else
+                                                            {
+                                                                 <span>Liên hệ</span>
+                                                            }
+                                                        }
+                                                    </td>
+                                                    <td class="text-center align-middle">@product.categories.categoryName</td>
+                                                    <td class="text-center align-middle">
+                                                        <div class="btn-group align-top">
+                                                            <button class="btn btn-sm btn-outline-secondary badge text-black edit-btn" type="button" data-bs-toggle="modal" data-bs-target="#edit-product-form-modal" data-product-id="@product.id">Edit</button>
+                                                            <a class="btn btn-sm btn-outline-secondary badge text-black" asp-controller="Home" asp-action="DeleteProduct" asp-route-id="@product.id">
+                                                                <i class="bi bi-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <ul class="pagination mt-3 mb-0">
+                                        <li class="disabled page-item"><a href="#" class="page-link">‹</a></li>
+                                        <li class="active page-item"><a href="#" class="page-link">1</a></li>
+                                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                        <li class="page-item"><a href="#" class="page-link">3</a></li>
+                                        <li class="page-item"><a href="#" class="page-link">4</a></li>
+                                        <li class="page-item"><a href="#" class="page-link">5</a></li>
+                                        <li class="page-item"><a href="#" class="page-link">›</a></li>
+                                        <li class="page-item"><a href="#" class="page-link">»</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text-center px-xl-3">
+                                <button class="btn btn-success btn-block" type="button" data-bs-toggle="modal" data-bs-target="#create-product-form-modal">New Product</button>
+                            </div>
+                            <hr class="my-3">
+                            <div class="e-navlist e-navlist--active-bold">
+                                <ul class="nav">
+                                    <li class="nav-item active"><a href="" class="nav-link"><span>All</span>&nbsp;<small>/&nbsp;32</small></a></li>
+                                    <li class="nav-item"><a href="" class="nav-link"><span>Active</span>&nbsp;<small>/&nbsp;16</small></a></li>
+                                    <li class="nav-item"><a href="" class="nav-link"><span>Selected</span>&nbsp;<small>/&nbsp;0</small></a></li>
+                                </ul>
+                            </div>
+                            <hr class="my-3">
+                            <div>
+                                <div class="form-group">
+                                    <label>Date from - to:</label>
+                                    <div>
+                                        <input id="dates-range" class="form-control flatpickr-input" placeholder="01 Dec 17 - 27 Jan 18" type="text" readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Search by Name:</label>
+                                    <div><input class="form-control w-100" type="text" placeholder="Name" value=""></div>
+                                </div>
+                            </div>
+                            <hr class="my-3">
+                            <div class="">
+                                <label>Status:</label>
+                                <div class="px-2">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="user-status" id="users-status-disabled">
+                                        <label class="custom-control-label" for="users-status-disabled">Disabled</label>
+                                    </div>
+                                </div>
+                                <div class="px-2">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="user-status" id="users-status-active">
+                                        <label class="custom-control-label" for="users-status-active">Active</label>
+                                    </div>
+                                </div>
+                                <div class="px-2">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="user-status" id="users-status-any" checked="">
+                                        <label class="custom-control-label" for="users-status-any">Any</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Product Form Modal -->
+            <div class="modal fade" role="dialog" tabindex="-1" id="edit-product-form-modal">
+                <div class="modal-dialog modal-dialog-centered">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Product</h5>
+                            <button type="button" class="close border-0 bg-white" data-bs-dismiss="modal">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="py-1">
+                                    <form class="form" method="POST" action="@Url.Action("EditProduct", "Home")">
+                                    <input type="hidden" name="id" />
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Product Name</label>
+                                                        <input class="form-control" type="text" name="productName" placeholder="Product name" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Category</label>
+                                                        <select class="form-select" name="categoryId"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Current price</label>
+                                                        <input class="form-control" type="text" name="productCurrentPrice" placeholder="Current price" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Old price</label>
+                                                        <input class="form-control" type="text" name="productOldPrice" placeholder="Old price" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="isSoldOut" class="form-check-label">Out of order</label>
+                                                        <input class="form-check-input" type="checkbox" name="isSoldOut" value="true" />
+                                                        <input type="hidden" value="false" name="isSoldOut" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Product img</label>
+                                                        <input class="form-control" type="file" name="productThumbnail" placeholder="Product img">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col mb-3">
+                                                    <div class="form-group">
+                                                        <label>About</label>
+                                                        <textarea class="form-control" rows="5" name="description" placeholder="Description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col d-flex justify-content-end">
+                                            <button class="btn btn-primary" type="submit">Save Changes</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Product Form Modal -->
+            <div class="modal fade" role="dialog" tabindex="-1" id="create-product-form-modal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Create Product</h5>
+                            <button type="button" class="close border-0 bg-white" data-bs-dismiss="modal">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="py-1">
+                                <form class="form" method="POST" action="@Url.Action("CreateProduct", "Home")" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Product Name</label>
+                                                        <input class="form-control" type="text" name="productName" placeholder="Product name" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Category</label>
+                                                        <select class="form-select" name="categoryId"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Current price</label>
+                                                        <input class="form-control" type="text" name="productCurrentPrice" placeholder="Current price" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Old price</label>
+                                                        <input class="form-control" type="text" name="productOldPrice" placeholder="Old price" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="isSoldOut" class="form-check-label">Out of order</label>
+                                                        <input class="form-check-input" type="checkbox" name="isSoldOut" value="true" />
+                                                        <input type="hidden" value="false" name="isSoldOut" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Product img</label>
+                                                        <input class="form-control" type="file" name="productImg" placeholder="Product img">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col mb-3">
+                                                    <div class="form-group">
+                                                        <label>About</label>
+                                                        <textarea class="form-control" rows="5" name="description" placeholder="Description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col d-flex justify-content-end">
+                                            <button class="btn btn-primary" type="submit">Add Product</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            const list = @Html.Raw(Json.Serialize(Model))
+            const categoryList = @Html.Raw(Json.Serialize(ViewBag.categories));
+            $("#create-product-form-modal select[name='categoryId']").html(
+                categoryList.map(category => {
+                    return `<option value="${category.id}" ${category.id == 1 && "selected"}>${category.categoryName}</option>`
+                })
+            )
+            $('.edit-btn').click(function () {
+                const productId = $(this).attr("data-product-id")
+                const findProduct = list.find(product => product.id == productId)
+                const { id, productName, productCurrentPrice, productOldPrice, isSoldOut, productThumbnail, categories, description } = findProduct
+                $("#edit-product-form-modal input[name='id']").val(id);
+                $("#edit-product-form-modal input[name='productName']").val(productName);
+                $("#edit-product-form-modal input[name='productCurrentPrice']").val(productCurrentPrice);
+                $("#edit-product-form-modal input[name='productOldPrice']").val(productOldPrice);
+                if (isSoldOut) {
+                    $("#edit-product-form-modal .form-check-input").prop("checked", true);
+                }
+                $("#edit-product-form-modal textarea[name='description']").html(description);
+                $("#edit-product-form-modal select[name='categoryId']").html(
+                    categoryList.map(category => {
+                        return `<option value="${category.id}" ${category.categoryName === categories.categoryName && "selected"}>${category.categoryName}</option>`
+                    })
+                )
+                
+            })
+        })
+        
+    </script>

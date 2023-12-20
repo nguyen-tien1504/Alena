@@ -6,9 +6,9 @@
     <title>@ViewBag.title - Alena</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet"
-          href="owlcarousel/owl.carousel.min.css" />
+          href="~/owlcarousel/owl.carousel.min.css" />
     <link rel="stylesheet"
-          href="owlcarousel/owl.theme.default.min.css" />
+          href="~/owlcarousel/owl.theme.default.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
@@ -24,8 +24,8 @@
                     <div class="d-flex flex-wrap align-items-center h-100">
                         <!-- ------- Logo -------- -->
                         <div class="col-5 col-lg-3 px-3 order-0 d-flex logo_header">
-                            <a href="">
-                                <img src="public/demo/logo.webp"
+                            <a href="/">
+                                <img src="~/public/demo/logo.webp"
                                      alt=""
                                      class="img-fluid" />
                             </a>
@@ -445,7 +445,7 @@
                                         </a>
                                     </li>
                                     <li class="position-relative @Html.Raw(ViewBag.active == "Thời trang Nam" ? "active" : "")">
-                                        <a asp-controller="ThoiTrangNam" asp-action="Index"
+                                        <a href=@Url.Action(null, "Product", new {collection = "men-collection"})
                                            class="text_green position-relative caret_down">
                                             Thời trang Nam
                                         </a>
@@ -489,7 +489,7 @@
                                         </ul>
                                     </li>
                                     <li class="position-relative">
-                                        <a href=""
+                                        <a href=@Url.Action(null, "Product", new {collection = "product"})
                                            class="text_green position-relative caret_down">
                                             Sản phẩm
                                         </a>
@@ -551,13 +551,13 @@
                                         </ul>
                                     </li>
                                     <li class="position-relative">
-                                        <a href=""
+                                        <a href=@Url.Action(null, "Product", new {collection = "boy-collection"})
                                            class="text_green position-relative">
                                             Bé trai
                                         </a>
                                     </li>
                                     <li class="position-relative">
-                                        <a href=""
+                                        <a href=@Url.Action(null, "Product", new {collection = "girl-collection"})
                                            class="text_green position-relative">
                                             Bé gái
                                         </a>
@@ -652,7 +652,7 @@
                     <div class="d-flex flex-wrap">
                         <div class="col-12 col-md-6 col-lg-5 px-3 mb-3 mb-lg-0">
                             <a href="">
-                                <img src="public/demo/logo.webp"
+                                <img src="~/public/demo/logo.webp"
                                      alt=""
                                      class="img-fluid" />
                             </a>
@@ -907,23 +907,12 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-12 copyright">
-                <div class="container px-3 text-white text-center">
-                    <p class="mb-0 d-md-inline">© Bản quyền thuộc về Cafein Team</p>
-                    <span class="d-none d-md-inline">|</span>
-                    <p class="mb-0 d-md-inline">
-                        Cung cấp bởi
-                        <a href="">Sapo</a>
-                    </p>
-                </div>
-            </div>
         </div>
     </div>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/owlcarousel/owl.carousel.min.js"></script>
     <script>
         $(document).ready(function () {
             $(".collection_selector").click(function () {

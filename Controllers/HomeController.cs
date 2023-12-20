@@ -1,4 +1,5 @@
 ﻿using Alena.Models;
+using Alena.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,10 +7,10 @@ namespace Alena.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly DataContext dataContext;
-        public HomeController(DataContext dataContext)
+        private readonly IProductService _productService;
+        public HomeController(IProductService productService)
         {
-            this.dataContext = dataContext;
+            this._productService = productService;
         }
         public IActionResult Index()
         {
@@ -27,8 +28,20 @@ namespace Alena.Controllers
 
             //Cách 2 để truyền dữ liệu vào view Controller -> View
 
-            List<ProductModel> productList = dataContext.products.Include("categories").ToList();
+            List<ProductModel> productList = _productService.getAllProduct();
             return View(productList);
+        }
+
+        [Route("[controller]/[action]/{id}")]
+        public IActionResult ProductDetail(int id)
+        {
+            ProductModel product = _productService.getProductById(id);
+            if (product == null)
+            {
+                return View("~/Views/Shared/NotFound.cshtml");
+            }
+
+            return View(product);
         }
     }
 }

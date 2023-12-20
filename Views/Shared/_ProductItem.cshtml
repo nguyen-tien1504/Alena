@@ -1,9 +1,8 @@
 ﻿@using System.Globalization;
 @model ProductModel
 <div class="product_thumnail overflow-hidden position-relative">
-    <a href=""
-       class="h-100">
-        <img src="@Model.productThumbnai"
+    <a class="h-100" asp-controller="Home" asp-action="ProductDetail" asp-route-id=@Model.id>
+        <img src=@Model.productThumbnail
              alt=""
              class="img-fluid" />
     </a>

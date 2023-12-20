@@ -11,7 +11,7 @@ namespace Alena.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         [Column(TypeName = "text")]
-        public string productThumbnai { get; set; }
+        public string? productThumbnail { get; set; }
         public string productName { get; set; }
         public double? productCurrentPrice { get; set; }
         public double? productOldPrice { get; set; }
@@ -19,5 +19,6 @@ namespace Alena.Models
         public int categoryId { get; set; }
         [ForeignKey("categoryId")]
         public CategoryModel categories { get; set; }
+        public string? description { get; set; }
     }
 }
